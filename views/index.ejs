@@ -1,0 +1,28 @@
+<h1>Employees</h1>
+
+<h3>Add Employee</h3>
+<form method="post" action="/employee/add">
+<label for="Name">Name :</label>
+<input type="text" name="Name" placeholder="Enter Name"><br>
+<label for="Email">Email :</label>
+<input type="text" name="Email" placeholder="Enter Email ID"><br>
+<label for="EmployeeID">EmpID</label>
+<input type="text" name="EmployeeID" placeholder="Enter Employee ID"><br>
+<input type="submit" value="ADD">
+</form>
+
+<ul>
+<% employees.forEach(function(employee){ %>
+<li>
+  <h3><%= employee.value.Name %></h3> <br>
+  <p><%= employee.value.Email %> </p>
+  <p><%= employee.value.EmployeeID %> </p>
+
+<form method="post" action="/employee/delete/<%= employee.key %>">
+<input type="hidden" value="<%= employee.value.rev %>" name="rev">
+<input type="submit" value="DELETE"><br>
+</form>
+
+</li>
+<%});%>
+</ul>
